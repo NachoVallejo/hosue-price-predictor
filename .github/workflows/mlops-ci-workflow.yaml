@@ -44,8 +44,8 @@ jobs:
       - name: Run Model Training
         run: |
           python src/models/train_model.py --config configs/model_config.yaml \
-          --input data/processed/featured_house_data.csv \
-          --output models/trained/house_price_model.pkl \
+          --data data/processed/featured_house_data.csv \
+          --models-dir models/trained/house_price_model.pkl \
           --mlflow-tracking-uri http://localhost:5555
 
       - name: Cleaning up MLflow Tracking Server
