@@ -64,7 +64,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: dockerhernan19/app:{{ github.sha }}
+          tags: dockerhernan19/app:${{ github.sha }}
           context: .
           file: Dockerfile
 
