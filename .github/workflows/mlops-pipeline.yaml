@@ -51,17 +51,15 @@ jobs:
           python src/features/engineer.py --input data/processed/cleaned_house_data.csv \
           --output data/processed/featured_house_data.csv \
           --preprocessor models/trained/preprocessor.pkl
-      - Upload preprocessed data artifact:
-          name: processed-data
+      - name: Upload preprocessed data artifact
           uses: actions/upload-artifact@v3
           with:
             name: processed-data
             paths: data/processed/featured_house_data.csv
-      - Upload preprocessor artifact:
-          name: models
+      - name: Upload preprocessor artifact
           uses: actions/upload-artifact@v3
           with:
-            name: models
+            name: preprocessor
             paths: models/trained/preprocessor.pkl
   model-training:
     if: github.event.inputs.run-all == 'true' || github.event.inputs.run-model-training == 'true'
