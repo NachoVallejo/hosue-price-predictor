@@ -55,12 +55,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: processed-data
-          paths: data/processed/featured_house_data.csv
+          path: data/processed/featured_house_data.csv
       - name: Upload preprocessor artifact
         uses: actions/upload-artifact@v4
         with:
           name: preprocessor
-          paths: models/trained/preprocessor.pkl
+          path: models/trained/preprocessor.pkl
   model-training:
     if: github.event.inputs.run-all == 'true' || github.event.inputs.run-model-training == 'true'
     needs: data-preprocessing
@@ -80,7 +80,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: processed-data
-          path: data/processed/
+          paths: data/processed/
       - name: MLflow Tracking Server Setup
         run: |
           docker pull ghcr.io/mlflow/mlflow:latest
@@ -118,12 +118,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: trained-model
-          path: models/trained/
+          paths: models/trained/
       - name: Download preprocessor artifact
         uses: actions/download-artifact@v4
         with:
           name: preprocessor
-          path: models/trained/
+          paths: models/trained/
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
