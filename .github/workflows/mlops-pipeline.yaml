@@ -53,14 +53,14 @@ jobs:
           --preprocessor models/trained/preprocessor.pkl
       - name: Upload preprocessed data artifact
         uses: actions/upload-artifact@v3
-          with:
-            name: processed-data
-            paths: data/processed/featured_house_data.csv
+        with:
+          name: processed-data
+          paths: data/processed/featured_house_data.csv
       - name: Upload preprocessor artifact
-          uses: actions/upload-artifact@v3
-          with:
-            name: preprocessor
-            paths: models/trained/preprocessor.pkl
+        uses: actions/upload-artifact@v3
+        with:
+          name: preprocessor
+          paths: models/trained/preprocessor.pkl
   model-training:
     if: github.event.inputs.run-all == 'true' || github.event.inputs.run-model-training == 'true'
     needs: data-preprocessing
