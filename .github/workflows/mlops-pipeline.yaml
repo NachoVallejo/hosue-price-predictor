@@ -80,7 +80,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: processed-data
-          paths: data/processed/
+          path: data/processed/
       - name: MLflow Tracking Server Setup
         run: |
           docker pull ghcr.io/mlflow/mlflow:latest
